@@ -44,7 +44,8 @@ public class RNAndroidWhitelistModule extends ReactContextBaseJavaModule {
     new Intent().setComponent(new ComponentName("com.iqoo.secure", "com.iqoo.secure.ui.phoneoptimize.AddWhiteListActivity")),
     new Intent().setComponent(new ComponentName("com.iqoo.secure", "com.iqoo.secure.ui.phoneoptimize.BgStartUpManager")),
     new Intent().setComponent(new ComponentName("com.vivo.permissionmanager", "com.vivo.permissionmanager.activity.BgStartUpManagerActivity")),
-    new Intent().setComponent(new ComponentName("com.asus.mobilemanager", "com.asus.mobilemanager.entry.FunctionActivity")).setData(Uri.parse("mobilemanager://function/entry/AutoStart"))
+    new Intent().setComponent(new ComponentName("com.asus.mobilemanager", "com.asus.mobilemanager.entry.FunctionActivity")).setData(Uri.parse("mobilemanager://function/entry/AutoStart")),
+    new Intent().setComponent(new ComponentName("com.samsung.android.lool", "com.samsung.android.sm.ui.battery.BatteryActivity"))
 };
 
   @ReactMethod
@@ -84,7 +85,7 @@ public class RNAndroidWhitelistModule extends ReactContextBaseJavaModule {
               try {
                 for (Intent intent : AUTO_START_INTENTS)
                   if (isCallable(intent)) {
-                    editor.putBoolean(saveIfSkip, false);
+                    editor.putBoolean(saveIfSkip, true);
                     editor.apply();
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                     reactContext.startActivity(intent);
